@@ -1,0 +1,106 @@
+services:
+  nosql-db:
+    image: mongo:6.0
+    ports:
+      - "27018:27017"
+    container_name: nosql-db
+    # volumes:
+    #   - ./db/:/data/db
+
+  rabbitmq:
+    image: bitnami/rabbitmq:latest
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672" # Optional: exposes RabbitMQ web UI
+    environment:
+      RABBITMQ_USERNAME: sande
+      RABBITMQ_PASSWORD: Abc123!
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit loopback_users []"
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  products:
+    build:
+      dockerfile: Dockerfile
+      context: ./products
+    container_name: products
+    ports:
+      - "8002:8002"
+    restart: always
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      nosql-db:
+        condition: service_started
+    volumes:
+      - .:/app
+      - /app/products/node_modules
+    env_file:
+      - ./products/.env
+
+  shopping:
+    build:
+      dockerfile: Dockerfile
+      context: ./shopping
+    container_name: shopping
+    ports:
+      - "8003:8003"
+    restart: always
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      nosql-db:
+        condition: service_started
+    volumes:
+      - .:/app
+      - /app/shopping/node_modules
+    env_file:
+      - ./shopping/.env
+
+  customer:
+    build:
+      dockerfile: Dockerfile
+      context: ./customer
+    container_name: customer
+    ports:
+      - "8001:8001"
+    restart: always
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      nosql-db:
+        condition: service_started
+    volumes:
+      - .:/app/
+      - /app/customer/node_modules
+    env_file:
+      - ./customer/.env
+
+  nginx-proxy:
+    build:
+      dockerfile: Dockerfile
+      context: ./proxy
+    container_name: nginx-proxy
+    ports:
+      - "8888:80"
+    depends_on:
+      - products
+      - shopping
+      - customer
+
+  client:
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    container_name: shophub-client
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - nginx-proxy
+    environment:
+      - REACT_APP_API_URL=/api

@@ -1,0 +1,72 @@
+[
+    {
+        "name": "alphonso mango",
+        "desc": "great Quality of Mango",
+        "type": "fruits",
+        "banner": "https://res.cloudinary.com/dnikypxkp/image/upload/v1755920443/alphonso-mango_qe1czl.jpg",
+        "unit": 1,
+        "price": 300,
+        "available": true,
+        "suplier": "Golden seed firming"
+    },
+    {
+        "name": "Apples",
+        "desc": "great Quality of Apple",
+        "type": "fruits",
+        "banner": "https://res.cloudinary.com/dnikypxkp/image/upload/v1755920445/apple_rk889g.jpg",
+        "unit": 1,
+        "price": 140,
+        "available": true,
+        "suplier": "Golden seed firming"
+    },
+    {
+        "name": "Kesar Mango",
+        "desc": "great Quality of Mango",
+        "type": "fruits",
+        "banner": "https://res.cloudinary.com/dnikypxkp/image/upload/v1755920446/KesarMango_byy5ro.png",
+        "unit": 1,
+        "price": 170,
+        "available": true,
+        "suplier": "Golden seed firming"
+    },
+    {
+        "name": "Langra Mango",
+        "desc": "great Quality of Mango",
+        "type": "fruits",
+        "banner": "https://res.cloudinary.com/dnikypxkp/image/upload/v1755920443/langra-mango_ekvllm.jpg",
+        "unit": 1,
+        "price": 280,
+        "available": true,
+        "suplier": "Golden seed firming"
+    },
+    {
+        "name": "Broccoli",
+        "desc": "great Quality of Fresh Vegetable",
+        "type": "vegetables",
+        "banner": "https://res.cloudinary.com/dnikypxkp/image/upload/v1755920445/broccoli-florets_ypwxtg.jpg",
+        "unit": 1,
+        "price": 280,
+        "available": true,
+        "suplier": "Golden seed firming"
+    },
+    {
+        "name": "Cauliflower",
+        "desc": "great Quality of Fresh Vegetable",
+        "type": "vegetables",
+        "banner": "https://res.cloudinary.com/dnikypxkp/image/upload/v1755920444/Cauliflower_qhogw6.jpg",
+        "unit": 1,
+        "price": 280,
+        "available": true,
+        "suplier": "Golden seed firming"
+    },
+    {
+        "name": "Olive Oil",
+        "desc": "great Quality of Oil",
+        "type": "oils",
+        "banner": "https://res.cloudinary.com/dnikypxkp/image/upload/v1755920444/Olive-Oil_tokyny.jpg",
+        "unit": 1,
+        "price": 400,
+        "available": true,
+        "suplier": "Golden seed firming"
+    }
+]
