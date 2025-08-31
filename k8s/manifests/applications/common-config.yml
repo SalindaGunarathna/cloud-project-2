@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: common-config
+data:
+  # Application Secret
+  APP_SECRET: "Secret"
+  
+  # MongoDB Connection Strings
+  MONGODB_URI_CUSTOMER: "mongodb://nosql-db:27017/ms_customer"
+  MONGODB_URI_PRODUCTS: "mongodb://nosql-db:27017/ms_products"  
+  MONGODB_URI_SHOPPING: "mongodb://nosql-db:27017/ms_shopping"
+  
+  # RabbitMQ Configuration
+  MSG_QUEUE_URL: "amqp://sande:Abc123!@rabbitmq:5672"
+  EXCHANGE_NAME: "ONLINE_STORE"
+  
+  # Service URLs for internal communication
+  CUSTOMER_SERVICE_URL: "http://customer-service:8001"
+  PRODUCTS_SERVICE_URL: "http://products-service:8002"
+  SHOPPING_SERVICE_URL: "http://shopping-service:8003"
+  NGINX_PROXY_URL: "http://nginx-proxy:80"
